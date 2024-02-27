@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-Widget appTitle = SizedBox(height: 45, child: Image.asset('assets/BookitTitle.png', fit: BoxFit.fitHeight,));
+Widget AppTitle = SizedBox(
+    height: 45,
+    child: Image.asset(
+      'assets/BookitTitle.png',
+      fit: BoxFit.fitHeight,
+    ));
 
 class InputField extends StatefulWidget {
   final String label;
-  final TextInputType type;
-  final bool obscured;
-  const InputField({super.key, required this.label, required this.type, required this.obscured});
+  final bool obscuretext;
+  const InputField({super.key, required this.label, this.obscuretext = false});
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -15,22 +19,24 @@ class InputField extends StatefulWidget {
 class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(widget.label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                const SizedBox(height: 10,),
-                TextField(
-                  style: const TextStyle(fontSize: 20,),
-                  maxLines: 1,
-                  keyboardType: widget.type,
-                  obscureText: widget.obscured,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color.fromARGB(255, 227, 233, 249),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide.none),
-                  ),
-                ),
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        widget.label,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      TextField(
+        obscureText: widget.obscuretext,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Color.fromARGB(255, 227, 233, 249),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide.none),
+        ),
+      ),
     ]);
   }
 }
@@ -47,12 +53,16 @@ class _SignButtonState extends State<SignButton> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {}, 
-      color: const Color.fromARGB(255, 168, 185, 230), 
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)), 
-      elevation: 0, 
-      padding: const EdgeInsets.symmetric(horizontal: 140, vertical: 15), 
-      child: Text(widget.text, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),);
+      onPressed: () {},
+      color: Color.fromARGB(255, 168, 185, 230),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      elevation: 0,
+      padding: EdgeInsets.symmetric(horizontal: 140, vertical: 15),
+      child: Text(
+        widget.text,
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+      ),
+    );
   }
 }
 
@@ -65,19 +75,26 @@ class RememberMe extends StatefulWidget {
 
 class _RememberMeState extends State<RememberMe> {
   bool x = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return Row(
-            children: [
-              Checkbox(
-                value: x, 
-                onChanged: (value) {setState(() {x = !x;});},
-                activeColor: const Color.fromARGB(255, 168, 185, 230),
-                checkColor: Colors.black,
-                ),
-              const Text("Remember me", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                ],
-              );
-          }
+      children: [
+        Checkbox(
+          value: x,
+          onChanged: (value) {
+            setState(() {
+              x = !x;
+            });
+          },
+          activeColor: Color.fromARGB(255, 168, 185, 230),
+          checkColor: Colors.black,
+        ),
+        Text(
+          "Remember me",
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
 }
