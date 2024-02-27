@@ -38,21 +38,23 @@ class _RegisterState extends State<Register> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: [
-                    const InputField(
+                    InputField(
                       label: "Full Name",
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const InputField(
+                    InputField(
                       label: "Email",
                     ),
                     const SizedBox(height: 10),
-                    const InputField(
+                    InputField(
+                      obscuretext: true,
                       label: "Password",
                     ),
                     const SizedBox(height: 10),
-                    const InputField(
+                    InputField(
+                      obscuretext: true,
                       label: "Confirm Password",
                     ),
                     const SizedBox(height: 25),
